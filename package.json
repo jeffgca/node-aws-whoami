@@ -1,0 +1,21 @@
+{
+  "name": "aws-whoami",
+  "version": "0.0.1",
+  "description": "A port of Ben's aws-whoami python module",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "aws"
+  ],
+  "author": "Jeff Griffiths ( jeff@eko-recordings.ca )",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.4.2"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.760.0",
+    "yargs": "^16.0.3"
+  }
+}
