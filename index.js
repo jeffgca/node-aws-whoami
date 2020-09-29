@@ -1,4 +1,5 @@
 const AWS = require("aws-sdk");
+const _ = require('lodash');
 
 // def whoami(session=None):
 //     session = session or boto3.Session()
@@ -38,23 +39,6 @@ function whoami(session, callback) {
             console.log(AWS.config.credentials);
         }
 
-        // var iam = new AWS.IAM({apiVersion: '2010-05-08'});
-
-        // var params = {
-        //     MaxItems: 10
-        //   };
-        
-        // // console.log('got here:', iam);
-        
-        // iam.getAccountSummary({}, (err, result) => {
-        //     if (err) throw err;
-        //     console.log(result);
-        // });
-
-        // iam.listRoles({}, (err, result) => {
-        //     if (err) throw err;
-        //     console.log(result);
-        // });
 
         AWS.config.update({region: 'us-west-2'});
 
@@ -62,7 +46,15 @@ function whoami(session, callback) {
 
         sts.getCallerIdentity((err, result) => {
             if (err) throw err;
-            console.log(result);
+
+            let _data = {};
+            // console.log(result);
+
+            _.each(['Account', 'Arn', 'UserId'], (key) => {
+                _data[key] = result[key];
+            });
+
+            console.log(_data);
             
         })
     });
